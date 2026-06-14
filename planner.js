@@ -190,11 +190,12 @@ function walkMinutes(a, b) {
 function scoreAttraction(current, attraction) {
   const walk = walkMinutes(current, attraction);
   const wait = attraction.wait;
-  const popularityBoost = (11 - attraction.popularity) * 4;
-  if (state.priority === "shortWait") return wait * 1.35 + walk * 0.8 - attraction.popularity;
-  if (state.priority === "nearby") return walk * 2.4 + wait * 0.55 - attraction.popularity;
-  if (state.priority === "popular") return wait * 0.8 + walk - popularityBoost;
-  return wait + walk * 1.5 - attraction.popularity * 1.8;
+  const lowPopularityPenalty = attraction.popularity <= 3 ? 30 : attraction.popularity <= 5 ? 10 : 0;
+
+  if (state.priority === "shortWait") return wait * 1.15 + walk * 0.9 - attraction.popularity * 1.5;
+  if (state.priority === "nearby") return walk * 2.2 + wait * 0.5 - attraction.popularity * 2 + lowPopularityPenalty * 0.35;
+  if (state.priority === "popular") return wait * 0.55 + walk * 0.75 - attraction.popularity * 8 + lowPopularityPenalty;
+  return wait * 0.78 + walk * 1.15 - attraction.popularity * 4.8 + lowPopularityPenalty;
 }
 
 function buildRoute() {
