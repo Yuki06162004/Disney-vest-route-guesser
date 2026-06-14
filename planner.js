@@ -29,6 +29,88 @@ const parks = {
   },
 };
 
+const parkCatalog = {
+  land: {
+    name: "東京ディズニーランド",
+    entrances: [{ id: "entrance", name: "エントランス", x: 48, y: 90 }],
+    attractions: [
+      { id: "omnibus", name: "オムニバス", area: "ワールドバザール", x: 49, y: 78, wait: 10, duration: 6, popularity: 3 },
+      { id: "penny-arcade", name: "ペニーアーケード", area: "ワールドバザール", x: 45, y: 82, wait: 5, duration: 10, popularity: 2 },
+      { id: "pirates", name: "カリブの海賊", area: "アドベンチャーランド", x: 36, y: 76, wait: 15, duration: 15, popularity: 7 },
+      { id: "jungle-cruise", name: "ジャングルクルーズ", area: "アドベンチャーランド", x: 31, y: 72, wait: 25, duration: 10, popularity: 6 },
+      { id: "western-river", name: "ウエスタンリバー鉄道", area: "アドベンチャーランド", x: 34, y: 66, wait: 20, duration: 15, popularity: 5 },
+      { id: "tiki-room", name: "魅惑のチキルーム", area: "アドベンチャーランド", x: 29, y: 78, wait: 10, duration: 10, popularity: 3 },
+      { id: "swiss-treehouse", name: "スイスファミリー・ツリーハウス", area: "アドベンチャーランド", x: 39, y: 70, wait: 5, duration: 9, popularity: 2 },
+      { id: "shooting-gallery", name: "ウエスタンランド・シューティングギャラリー", area: "ウエスタンランド", x: 27, y: 60, wait: 10, duration: 6, popularity: 3 },
+      { id: "country-bear", name: "カントリーベア・シアター", area: "ウエスタンランド", x: 30, y: 53, wait: 10, duration: 15, popularity: 4 },
+      { id: "mark-twain", name: "蒸気船マークトウェイン号", area: "ウエスタンランド", x: 21, y: 50, wait: 15, duration: 12, popularity: 4 },
+      { id: "tom-sawyer", name: "トムソーヤ島いかだ", area: "ウエスタンランド", x: 18, y: 57, wait: 10, duration: 10, popularity: 3 },
+      { id: "big-thunder", name: "ビッグサンダー・マウンテン", area: "ウエスタンランド", x: 25, y: 55, wait: 40, duration: 4, popularity: 8 },
+      { id: "splash", name: "スプラッシュ・マウンテン", area: "クリッターカントリー", x: 23, y: 38, wait: 55, duration: 10, popularity: 9 },
+      { id: "canoes", name: "ビーバーブラザーズのカヌー探険", area: "クリッターカントリー", x: 19, y: 43, wait: 15, duration: 10, popularity: 4 },
+      { id: "alice-tea-party", name: "アリスのティーパーティー", area: "ファンタジーランド", x: 48, y: 39, wait: 15, duration: 2, popularity: 5 },
+      { id: "small-world", name: "イッツ・ア・スモールワールド", area: "ファンタジーランド", x: 58, y: 33, wait: 20, duration: 10, popularity: 6 },
+      { id: "castle-carrousel", name: "キャッスルカルーセル", area: "ファンタジーランド", x: 51, y: 46, wait: 15, duration: 2, popularity: 4 },
+      { id: "snow-white", name: "白雪姫と七人のこびと", area: "ファンタジーランド", x: 44, y: 44, wait: 15, duration: 3, popularity: 4 },
+      { id: "cinderella-hall", name: "シンデレラのフェアリーテイル・ホール", area: "ファンタジーランド", x: 48, y: 55, wait: 20, duration: 8, popularity: 5 },
+      { id: "dumbo", name: "空飛ぶダンボ", area: "ファンタジーランド", x: 56, y: 40, wait: 25, duration: 2, popularity: 6 },
+      { id: "peter-pan", name: "ピーターパン空の旅", area: "ファンタジーランド", x: 42, y: 38, wait: 35, duration: 3, popularity: 7 },
+      { id: "pinocchio", name: "ピノキオの冒険旅行", area: "ファンタジーランド", x: 46, y: 35, wait: 15, duration: 3, popularity: 4 },
+      { id: "pooh", name: "プーさんのハニーハント", area: "ファンタジーランド", x: 54, y: 43, wait: 45, duration: 5, popularity: 8 },
+      { id: "haunted-mansion", name: "ホーンテッドマンション", area: "ファンタジーランド", x: 41, y: 31, wait: 30, duration: 15, popularity: 7 },
+      { id: "philharmagic", name: "ミッキーのフィルハーマジック", area: "ファンタジーランド", x: 53, y: 49, wait: 15, duration: 11, popularity: 5 },
+      { id: "beauty-beast", name: "美女と野獣 魔法のものがたり", area: "ファンタジーランド", x: 66, y: 36, wait: 75, duration: 8, popularity: 10 },
+      { id: "gadget", name: "ガジェットのゴーコースター", area: "トゥーンタウン", x: 73, y: 35, wait: 25, duration: 1, popularity: 5 },
+      { id: "goofy-paint", name: "グーフィーのペイント＆プレイハウス", area: "トゥーンタウン", x: 78, y: 43, wait: 20, duration: 2, popularity: 5 },
+      { id: "chipdale-treehouse", name: "チップとデールのツリーハウス", area: "トゥーンタウン", x: 75, y: 30, wait: 5, duration: 6, popularity: 3 },
+      { id: "donald-boat", name: "ドナルドのボート", area: "トゥーンタウン", x: 82, y: 38, wait: 5, duration: 6, popularity: 3 },
+      { id: "minnie-house", name: "ミニーの家", area: "トゥーンタウン", x: 79, y: 32, wait: 10, duration: 6, popularity: 4 },
+      { id: "roger-rabbit", name: "ロジャーラビットのカートゥーンスピン", area: "トゥーンタウン", x: 70, y: 42, wait: 25, duration: 4, popularity: 6 },
+      { id: "star-tours", name: "スター・ツアーズ", area: "トゥモローランド", x: 80, y: 61, wait: 20, duration: 5, popularity: 6 },
+      { id: "stitch-encounter", name: "スティッチ・エンカウンター", area: "トゥモローランド", x: 77, y: 70, wait: 20, duration: 12, popularity: 5 },
+      { id: "monsters-inc", name: "モンスターズ・インク ライド＆ゴーシーク！", area: "トゥモローランド", x: 69, y: 69, wait: 35, duration: 4, popularity: 7 },
+      { id: "baymax", name: "ベイマックスのハッピーライド", area: "トゥモローランド", x: 69, y: 56, wait: 50, duration: 2, popularity: 9 },
+    ],
+  },
+  sea: {
+    name: "東京ディズニーシー",
+    entrances: [{ id: "entrance", name: "エントランス", x: 50, y: 91 }],
+    attractions: [
+      { id: "gondolas", name: "ヴェネツィアン・ゴンドラ", area: "メディテレーニアンハーバー", x: 42, y: 73, wait: 25, duration: 12, popularity: 5 },
+      { id: "fortress", name: "フォートレス・エクスプロレーション", area: "メディテレーニアンハーバー", x: 49, y: 63, wait: 5, duration: 15, popularity: 3 },
+      { id: "soaring", name: "ソアリン：ファンタスティック・フライト", area: "メディテレーニアンハーバー", x: 42, y: 62, wait: 85, duration: 5, popularity: 10 },
+      { id: "steamer-med", name: "ディズニーシー・トランジットスチーマーライン", area: "メディテレーニアンハーバー", x: 55, y: 69, wait: 15, duration: 7, popularity: 4 },
+      { id: "turtle-talk", name: "タートル・トーク", area: "アメリカンウォーターフロント", x: 27, y: 50, wait: 25, duration: 12, popularity: 6 },
+      { id: "tower-terror", name: "タワー・オブ・テラー", area: "アメリカンウォーターフロント", x: 24, y: 54, wait: 55, duration: 3, popularity: 9 },
+      { id: "toy-story", name: "トイ・ストーリー・マニア！", area: "アメリカンウォーターフロント", x: 31, y: 41, wait: 70, duration: 7, popularity: 10 },
+      { id: "big-city-vehicles", name: "ビッグシティ・ヴィークル", area: "アメリカンウォーターフロント", x: 35, y: 55, wait: 10, duration: 10, popularity: 3 },
+      { id: "electric-railway-aw", name: "ディズニーシー・エレクトリックレールウェイ", area: "アメリカンウォーターフロント", x: 39, y: 45, wait: 15, duration: 2, popularity: 4 },
+      { id: "aquatopia", name: "アクアトピア", area: "ポートディスカバリー", x: 58, y: 27, wait: 30, duration: 3, popularity: 6 },
+      { id: "electric-railway-pd", name: "ディズニーシー・エレクトリックレールウェイ", area: "ポートディスカバリー", x: 61, y: 23, wait: 15, duration: 2, popularity: 4 },
+      { id: "nemo", name: "ニモ＆フレンズ・シーライダー", area: "ポートディスカバリー", x: 63, y: 28, wait: 30, duration: 5, popularity: 7 },
+      { id: "indy", name: "インディ・ジョーンズ・アドベンチャー", area: "ロストリバーデルタ", x: 75, y: 33, wait: 45, duration: 3, popularity: 8 },
+      { id: "raging", name: "レイジングスピリッツ", area: "ロストリバーデルタ", x: 82, y: 42, wait: 35, duration: 2, popularity: 7 },
+      { id: "steamer-lost", name: "ディズニーシー・トランジットスチーマーライン", area: "ロストリバーデルタ", x: 72, y: 48, wait: 15, duration: 7, popularity: 4 },
+      { id: "caravan-carousel", name: "キャラバンカルーセル", area: "アラビアンコースト", x: 72, y: 62, wait: 15, duration: 3, popularity: 4 },
+      { id: "jasmine-carpets", name: "ジャスミンのフライングカーペット", area: "アラビアンコースト", x: 77, y: 67, wait: 20, duration: 2, popularity: 5 },
+      { id: "sindbad", name: "シンドバッド・ストーリーブック・ヴォヤッジ", area: "アラビアンコースト", x: 82, y: 57, wait: 10, duration: 10, popularity: 5 },
+      { id: "magic-lamp", name: "マジックランプシアター", area: "アラビアンコースト", x: 69, y: 69, wait: 20, duration: 23, popularity: 5 },
+      { id: "flounder", name: "フランダーのフライングフィッシュコースター", area: "マーメイドラグーン", x: 62, y: 66, wait: 25, duration: 1, popularity: 5 },
+      { id: "scuttle", name: "スカットルのスクーター", area: "マーメイドラグーン", x: 57, y: 70, wait: 15, duration: 2, popularity: 4 },
+      { id: "jumpin-jellyfish", name: "ジャンピン・ジェリーフィッシュ", area: "マーメイドラグーン", x: 65, y: 72, wait: 15, duration: 2, popularity: 4 },
+      { id: "blowfish", name: "ブローフィッシュ・バルーンレース", area: "マーメイドラグーン", x: 68, y: 66, wait: 15, duration: 2, popularity: 4 },
+      { id: "whirlpool", name: "ワールプール", area: "マーメイドラグーン", x: 60, y: 74, wait: 15, duration: 2, popularity: 4 },
+      { id: "mermaid-theater", name: "マーメイドラグーンシアター", area: "マーメイドラグーン", x: 62, y: 69, wait: 25, duration: 14, popularity: 6 },
+      { id: "journey", name: "センター・オブ・ジ・アース", area: "ミステリアスアイランド", x: 55, y: 46, wait: 50, duration: 3, popularity: 9 },
+      { id: "leagues", name: "海底2万マイル", area: "ミステリアスアイランド", x: 51, y: 50, wait: 25, duration: 5, popularity: 6 },
+      { id: "frozen", name: "アナとエルサのフローズンジャーニー", area: "ファンタジースプリングス", x: 70, y: 16, wait: 90, duration: 6, popularity: 10 },
+      { id: "rapunzel", name: "ラプンツェルのランタンフェスティバル", area: "ファンタジースプリングス", x: 77, y: 20, wait: 65, duration: 5, popularity: 9 },
+      { id: "peter-pan-sea", name: "ピーターパンのネバーランドアドベンチャー", area: "ファンタジースプリングス", x: 83, y: 17, wait: 75, duration: 6, popularity: 9 },
+      { id: "tinker-bell", name: "フェアリー・ティンカーベルのビジーバギー", area: "ファンタジースプリングス", x: 86, y: 24, wait: 45, duration: 2, popularity: 7 },
+    ],
+  },
+};
+
 let state = {
   park: "land",
   start: "entrance",
@@ -81,7 +163,7 @@ function storageKey(id) {
 }
 
 function getPark() {
-  return parks[state.park];
+  return parkCatalog[state.park] || parkCatalog.land;
 }
 
 function getAttractions() {
