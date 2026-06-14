@@ -324,8 +324,8 @@ function setupSync() {
 function renderControls() {
   parkSelect.value = state.park;
   prioritySelect.value = state.priority;
-  timeBudgetInput.value = state.timeBudget;
-  maxStopsInput.value = state.maxStops;
+  if (timeBudgetInput) timeBudgetInput.value = state.timeBudget;
+  if (maxStopsInput) maxStopsInput.value = state.maxStops;
   parkName.textContent = getPark().name;
   roomCode.textContent = state.roomId || "未作成";
   syncStatus.textContent = state.roomId ? (cloudReady ? "Firebaseで共有中" : "同じ端末内で共有") : "この端末のみ";
@@ -434,8 +434,8 @@ function readForm() {
   state.park = parkSelect.value;
   state.start = startSelect.value;
   state.priority = prioritySelect.value;
-  state.timeBudget = Number.parseInt(timeBudgetInput.value, 10) || 180;
-  state.maxStops = Number.parseInt(maxStopsInput.value, 10) || 4;
+  state.timeBudget = Number.parseInt(timeBudgetInput?.value, 10) || 210;
+  state.maxStops = Number.parseInt(maxStopsInput?.value, 10) || 5;
 }
 
 function resetWaits() {
@@ -464,14 +464,14 @@ prioritySelect.addEventListener("change", () => {
   saveState();
 });
 
-timeBudgetInput.addEventListener("change", () => {
-  state.timeBudget = Number.parseInt(timeBudgetInput.value, 10) || 180;
+timeBudgetInput?.addEventListener("change", () => {
+  state.timeBudget = Number.parseInt(timeBudgetInput.value, 10) || 210;
   buildRoute();
   saveState();
 });
 
-maxStopsInput.addEventListener("change", () => {
-  state.maxStops = Number.parseInt(maxStopsInput.value, 10) || 4;
+maxStopsInput?.addEventListener("change", () => {
+  state.maxStops = Number.parseInt(maxStopsInput.value, 10) || 5;
   buildRoute();
   saveState();
 });
