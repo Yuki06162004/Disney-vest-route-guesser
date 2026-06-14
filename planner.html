@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>パークルート提案</title>
+    <link rel="stylesheet" href="planner.css" />
+  </head>
+  <body>
+    <main class="planner-shell">
+      <section class="topbar" aria-label="ルーム操作">
+        <div>
+          <p class="eyebrow">Tokyo Disney Resort route planner</p>
+          <h1>パークルート提案</h1>
+        </div>
+        <div class="room-tools">
+          <input id="roomInput" type="text" maxlength="8" placeholder="ルームコード" aria-label="ルームコード" />
+          <button id="joinRoomButton" type="button">参加</button>
+          <button id="createRoomButton" type="button" class="primary">作成</button>
+        </div>
+      </section>
+
+      <section class="status-strip" aria-label="現在の状態">
+        <div>
+          <span>パーク</span>
+          <strong id="parkName">東京ディズニーランド</strong>
+        </div>
+        <div>
+          <span>ルーム</span>
+          <strong id="roomCode">未作成</strong>
+        </div>
+        <div>
+          <span>同期</span>
+          <strong id="syncStatus">この端末のみ</strong>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="control-panel" aria-label="条件設定">
+          <label>
+            パーク
+            <select id="parkSelect">
+              <option value="land">東京ディズニーランド</option>
+              <option value="sea">東京ディズニーシー</option>
+            </select>
+          </label>
+
+          <label>
+            現在地
+            <select id="startSelect"></select>
+          </label>
+
+          <label>
+            重視すること
+            <select id="prioritySelect">
+              <option value="balanced">待ち時間と移動のバランス</option>
+              <option value="shortWait">待ち時間を最優先</option>
+              <option value="nearby">近い場所を優先</option>
+              <option value="popular">人気アトラクションを優先</option>
+            </select>
+          </label>
+
+          <div class="setting-row">
+            <label>
+              予定時間
+              <input id="timeBudgetInput" type="number" min="30" max="480" step="15" value="180" />
+            </label>
+            <label>
+              最大件数
+              <input id="maxStopsInput" type="number" min="1" max="8" value="4" />
+            </label>
+          </div>
+
+          <button id="optimizeButton" type="button" class="primary wide">おすすめルートを更新</button>
+          <p id="message" class="message"></p>
+        </aside>
+
+        <section class="route-panel" aria-label="おすすめルート">
+          <div class="map-card">
+            <svg id="parkMap" viewBox="0 0 100 100" role="img" aria-label="パーク内の候補位置"></svg>
+          </div>
+          <div class="route-summary">
+            <div>
+              <span>合計目安</span>
+              <strong id="totalTime">-- 分</strong>
+            </div>
+            <div>
+              <span>移動</span>
+              <strong id="walkTime">-- 分</strong>
+            </div>
+            <div>
+              <span>待ち時間</span>
+              <strong id="waitTime">-- 分</strong>
+            </div>
+          </div>
+          <ol id="routeList" class="route-list"></ol>
+        </section>
+      </section>
+
+      <section class="attraction-panel" aria-label="待ち時間入力">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Wait times</p>
+            <h2>公式アプリで見た待ち時間を入力</h2>
+          </div>
+          <button id="resetWaitsButton" type="button">初期値に戻す</button>
+        </div>
+        <div id="attractionList" class="attraction-list"></div>
+      </section>
+
+      <section class="guide-panel" aria-label="開発メモ">
+        <h2>GitHub と Firebase の始め方</h2>
+        <div class="guide-grid">
+          <article>
+            <strong>1. GitHub</strong>
+            <p>新しいリポジトリを作り、このフォルダのファイルをアップロードします。公開ページにするなら GitHub Pages で `planner.html` を開けます。</p>
+          </article>
+          <article>
+            <strong>2. Firebase</strong>
+            <p>Firebase コンソールで Web アプリを追加し、設定値を `firebase-config.js` に入れます。Firestore を有効化するとルーム共有が動きます。</p>
+          </article>
+          <article>
+            <strong>3. 公式待ち時間</strong>
+            <p>公式アプリの待ち時間を自動取得する公開APIは確認できないため、まずは手入力で運用します。提携できた場合だけ連携口を追加します。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="planner.js"></script>
+  </body>
+</html>
